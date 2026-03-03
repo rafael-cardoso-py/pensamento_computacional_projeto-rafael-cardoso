@@ -1,0 +1,59 @@
+print('\n🍔 HAMBURGUERIA 🍔\n')
+
+while True:
+    print('\n1. Cardápio')
+    print('2. Delivery')
+    print('0. Sair')
+
+    escolha_menu = input('\nEscolha uma opção: ')
+
+    # ========================
+    # OPÇÃO 1 - CARDÁPIO
+    # ========================
+    if escolha_menu == '1':
+
+        print('\n--- CARDÁPIO ---')
+        print('1. Combo Carne')
+        print('2. Combo Coca')
+        print('3. Combo Suco')
+
+        lanche = input('\nSelecione seu lanche: ')
+
+        print('\nEscolha até 2 acompanhamentos')
+        print('1. Nuggets')
+        print('2. Batata Extra')
+        print('3. Molho Barbecue')
+        print('4. Batata com Cheddar')
+        print('0. Não quero acompanhamentos')
+
+        acompanhamento1 = input('\nPrimeiro acompanhamento: ')
+        acompanhamento2 = input('Segundo acompanhamento (ou 0 para nenhum): ')
+
+        print('\nFinalizando pedido...')
+        print('Pedido finalizado com sucesso! ✅')
+
+    # ========================
+    # OPÇÃO 2 - DELIVERY
+    # ========================
+    elif escolha_menu == '2':
+
+        print('\n--- DELIVERY ---')
+
+        endereco = input('Digite seu endereço: ')
+        numero_residencia = input('Casa ou Apartamento: ')
+
+        print('\nPedido enviado para entrega! 🚚')
+        print(f'Endereço: {endereco} - {numero_residencia}')
+
+    # ========================
+    # OPÇÃO 0 - SAIR
+    # ========================
+    elif escolha_menu == '0':
+        print('\nSaindo do sistema... 👋')
+        break
+
+    # ========================
+    # OPÇÃO INVÁLIDA
+    # ========================
+    else:
+        print('\n❌ Opção inválida! Tente novamente.')
