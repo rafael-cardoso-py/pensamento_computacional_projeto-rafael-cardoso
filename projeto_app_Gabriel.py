@@ -62,15 +62,19 @@ input('Pressione enter para sair') #O input serve para pedir da tela
     
     
 import random
+# esse sistema serve para o cliente fazer o pedido, ver o cardapio, se deseja fazer delivey ou não, e para os interessados as vagas
+# inserir seus dados (idade e experiencia) para verificar se seus dados são compativeis com o que a vaga pede
 
 clientes = {}
+# area dos clientes
 
 combos = {
-    '1': ('Combo Classico Burger + Batata', 28.90),
-    '2': ('Combo Bacon Burger + Batata', 32.90),
-    '3': ('Combo Chicken Crispy + Batata', 33.90),
-    '4': ('Combo Cheeseburger Duplo + Batata', 34.90)
+    '1': ('Combo Classico Burger + Batata + Bebida', 28.90),
+    '2': ('Combo Bacon Burger + Batata + Bebida', 32.90),
+    '3': ('Combo Chicken Crispy + Batata + Bebida', 33.90),
+    '4': ('Combo Cheeseburger Duplo + Batata + Bebida', 34.90)
 }
+# variavel que funciona pelo codigo inteiro e mostra os combos quando usado
 
 lanches = {
     '5': ('Hamburguer Classico', 17.90),
@@ -79,6 +83,7 @@ lanches = {
     '8': ('Veggie Burger', 19.90),
     '9': ('Cheeseburger Duplo', 23.90)
 }
+# variavel que funciona pelo codigo inteiro e mostra os lanches unicos quando usado
 
 acompanhamentos = {
     '1': ('Nuggets', 9),
@@ -88,6 +93,7 @@ acompanhamentos = {
     '5': ('Molho Alho', 4),
     '6': ('Molho Especial', 5)
 }
+# variavel que funciona pelo codigo inteiro e mostra os acompanhamentos quando colocado
 
 sucos = {
     '1': 'Laranja',
@@ -95,6 +101,7 @@ sucos = {
     '3': 'Maracuja',
     '4': 'Abacaxi'
 }
+# variavel que funciona pelo codigo inteiro e mostr os sabores dos sucos quando colocado
 
 refrigerantes = {
     '1': 'Coca Cola',
@@ -102,6 +109,7 @@ refrigerantes = {
     '3': 'Fanta',
     '4': 'Sprite'
 }
+# variavel que funciona pelo codigo inteiro e mostra os sabores de refrigerantes quando usado
 
 vagas = {
     '1': ('Cozinheiro', 25, 5),
@@ -112,24 +120,30 @@ vagas = {
     '6': ('Auxiliar de Cozinha', 18, 0),
     '7': ('Caixa', 18, 1)
 }
+# variavel que funciona pelo codigo inteiro e mostra as vagas quando usado
 
 
 def sugestao_chef():
+    # função que funciona apenas no local dentro desse (def)
 
     item = random.choice(list(lanches.values()))
 
     print('\n⭐ Sugestao do chef')
     print(item[0], 'R$', item[1])
+    #  o sisetma mostra um lanche aleaorio com o valor certo do lanche
 
     resp = input('Deseja adicionar ao pedido? (s/n): ').lower()
+    # da a opção do cliente responder se deseja adicionar ao pedido 
 
     if resp == 's':
         return [(item[0], item[1], 1, 'sugestao')]
+    # a resposta sendo s (sim) ele adiciona ao pedido contabilizando o preço e retorna a escolha do pedido
 
     return []
 
 
 def escolher_lanches():
+    # função que funciona apenas no local dentro desse (def)
 
     carrinho = []
     total_parcial = 0
@@ -137,6 +151,7 @@ def escolher_lanches():
     while True:
 
         print('\nCARDAPIO\n')
+        # mostra as opções de pedido 
 
         for c in combos:
 
@@ -157,6 +172,7 @@ def escolher_lanches():
                 print(l, '-', lanches[l][0], 'R$', lanches[l][1])
 
         escolha = input('\nEscolha o numero do item: ')
+        # da ao cliente a opção de inserir uma resposta
 
         if escolha in combos:
             item = combos[escolha]
@@ -165,19 +181,25 @@ def escolher_lanches():
             item = lanches[escolha]
 
         else:
-            print('Opcao invalida.')
+            print('Opção Inexistente, Tente Novamente.')
             continue
+        # caso o cliente escolha alguma opção fora do permitido, esse codigo sinaliza que a opção esta incorreta e o direciona para
+        # inserir novamente uma opção correta
 
         while True:
 
             try:
                 qtd = int(input('Quantidade: '))
                 if qtd > 0:
+                    # se a opção for menor ou igual a 0 ele sinaliza para o cliente opção invalida e o direciona para inserir novamente
+                    # uma opção correta
                     break
+                # da ao cliente a escolha da quantidade do pedido
                 else:
                     print('Digite uma quantidade válida.')
             except:
                 print('Digite apenas números.')
+                # exige que as respostas sejam apenas numeros sem letras ou outros caracteres
 
         carrinho.append((item[0], item[1], qtd, escolha))
 
@@ -188,42 +210,55 @@ def escolher_lanches():
         print('Total parcial do carrinho: R$', format(total_parcial, '.2f'))
 
         mais = input('\nDeseja adicionar mais lanches? (s/n): ').lower()
+        # da ao cliente a opção de inserir uma resposta e se ele deseja adicionar mais lanches
 
         if mais != 's':
+            # se o sistema receber s (sim) retrona para o carrinho
             break
 
     return carrinho
 
 
 def escolher_acompanhamentos():
+    # função que funciona apenas no local dentro desse (def)
 
     lista = []
 
     escolha = input('\nDeseja acompanhamentos? (s/n): ').lower()
+    # da ao cliente a opção de inserir uma resposta e se ele deseja acompanhamentos
 
     if escolha == 's':
+        # se o sistema receber s (sim) o direciona para a area de acompanhamentos onde ele pode ver o preço e se deseja realmente
+        # adicionar acompanhamentos
 
         print('\nACOMPANHAMENTOS')
 
         for a in acompanhamentos:
             print(a, '-', acompanhamentos[a][0], 'R$', acompanhamentos[a][1])
+            # mostra ao cliente os acompanhamentos e os preços
 
         while True:
 
             ac = input('Escolha um acompanhamento (0 para parar): ')
+            # repete a opção de inserir uma resposta ate o sistema receber 0
 
             if ac == '0':
                 break
+            # quano sistema receber 0 ele para de repetir
 
             if ac in acompanhamentos:
                 lista.append(acompanhamentos[ac])
             else:
-                print('Opcao invalida.')
+                print('Opção Inexistente, Tente Novamente.')
+                # caso o cliente insira uma opção não existente ele o sinaliza isso e o direciona para colocar uma
+                # opção correta
 
     return lista
+# apos isso retorna a lista
 
 
 def escolher_bebida(combo=False):
+    # função que funciona apenas no local dentro desse (def)
 
     while True:
 
@@ -233,42 +268,54 @@ def escolher_bebida(combo=False):
             '2 Refrigerante\n'
             'Escolha: '
         )
+        # da ao cliente a opção de inserir uma resposta
 
         if escolha == '1':
+            # se o sistema receber 1 (sucos) mostra ao cliente os sabores disponiveis de sucos
 
             print('\nSabores de Suco')
 
             for s in sucos:
                 if combo:
                     print(s, '-', sucos[s])
+                    # se antes ele tiver escolhido combo não mostra o preço do suco
                 else:
                     print(s, '-', sucos[s], 'R$ 9')
+                    # caso contrario ele sinaliza o preço do suco ao cliente
 
             sabor = input('Escolha o suco: ')
+            # da ao cliente a opção de inserir uma resposta
 
             if sabor in sucos:
                 return (sucos[sabor], 0 if combo else 9)
 
         elif escolha == '2':
+            # caso o sitema  2 (refrigerantes) ele mostra ao cliente os sabores disponiveis de refrigerantes
 
             print('\nRefrigerantes')
 
             for r in refrigerantes:
                 if combo:
                     print(r, '-', refrigerantes[r])
+                    # se antes ele tiver escolhido combo não mostra o preço do refrigerante
                 else:
                     print(r, '-', refrigerantes[r], 'R$ 7')
+                    # caso contrario ele sinaliza o preço do refrigerante ao cliente
 
             refri = input('Escolha o refrigerante: ')
+            # da ao cliente a opção de inserir uma resposta
 
             if refri in refrigerantes:
                 return (refrigerantes[refri], 0 if combo else 7)
 
         else:
-            print('Opcao invalida.')
+            print('Opção Inexistente, Tente Novamente.')
+            # caso o cliente insira uma opção não existente ele o sinaliza isso e o direciona para colocar uma
+            # opção correta
 
 
 def escolher_pagamento():
+    # função que funciona apenas no local dentro desse (def)
 
     while True:
 
@@ -278,12 +325,14 @@ def escolher_pagamento():
             '2 Cartao\n'
             '3 Pix\n'
             'Escolha: '
-        )
+        )# da ao cliente a opção de inserir uma resposta
 
         if escolha == '1':
             return 'Dinheiro'
+        # se o sistema receber 1 (dinheiro) o cliente ira pagar em dinheiro
 
         elif escolha == '2':
+            # se o sistema receber 2 (cartão) da a opção de pagar no credito ou debito
 
             while True:
 
@@ -301,13 +350,13 @@ def escolher_pagamento():
                     return 'Cartao - Debito'
 
                 else:
-                    print('Opcao invalida.')
+                    print('Opção Inexistente, Tente Novamente.')
 
         elif escolha == '3':
             return 'Pix'
 
         else:
-            print('Opcao invalida.')
+            print('Opção Inexistente, Tente Novamente.')
 
 
 def fazer_pedido(delivery=False):
@@ -341,7 +390,7 @@ def fazer_pedido(delivery=False):
 
     lanches_escolhidos = sugestao_chef()
 
-    lanches_escolhidos += escolher_lanches()
+    lanches_escolhidos = escolher_lanches()
 
     acompanhamentos_escolhidos = escolher_acompanhamentos()
 
@@ -387,7 +436,7 @@ def fazer_pedido(delivery=False):
 
     numero_pedido = random.randint(1000, 9999)
 
-    tempo = random.randint(20, 40)
+    tempo = random.randint(20, 40,)
 
     print('\n' + '='*50)
     print('RESUMO DO PEDIDO')
@@ -473,4 +522,4 @@ while True:
         break
 
     else:
-        print('Opcao invalida.')
+        print('Opção Inexistente, Tente Novamente.')
