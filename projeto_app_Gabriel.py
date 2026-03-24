@@ -532,3 +532,55 @@ while True:
 
     else:
         print('Opção Inexistente, Tente Novamente.')
+
+"""
+SISTEMA DE HAMBURGUERIA - ESCOPO GERAL
+
+Este sistema simula o funcionamento de uma lanchonete, permitindo que o usuário:
+
+1. REALIZAR PEDIDOS
+   - Visualizar o cardápio (combos e lanches individuais)
+   - Escolher itens e quantidades
+   - Adicionar acompanhamentos
+   - Escolher bebidas (incluídas em combos ou adicionais)
+   - Receber sugestão aleatória do chef
+   - Visualizar subtotal e total do pedido
+
+2. DELIVERY
+   - Informar endereço (casa ou apartamento)
+   - Aplicação de taxa de entrega (R$10) ou frete grátis para pedidos acima de R$60
+   - Exibir resumo completo com endereço e tempo estimado
+
+3. PAGAMENTO
+   - Escolher forma de pagamento:
+     * Dinheiro
+     * Cartão (crédito ou débito)
+     * Pix
+
+4. CONTROLE DE CLIENTES
+   - Armazena nome do cliente
+   - Conta quantidade de pedidos já realizados
+
+5. CARDÁPIO
+   - Combos (com bebida inclusa)
+   - Lanches individuais
+   - Acompanhamentos
+   - Bebidas (sucos e refrigerantes)
+
+6. TRABALHE CONOSCO
+   - Lista de vagas disponíveis
+   - Validação de candidatos com base em:
+     * Idade mínima
+     * Experiência mínima
+
+7. FUNCIONALIDADES EXTRAS
+   - Geração de número do pedido aleatório
+   - Tempo estimado de preparo (20 a 40 minutos)
+   - Sugestão do chef aleatória
+   - Validação de entradas do usuário (evita erros)
+
+OBJETIVO:
+Simular um sistema completo de pedidos de lanchonete via terminal, incluindo
+fluxo de compra, delivery e recrutamento.
+
+"""
