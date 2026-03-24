@@ -62,9 +62,10 @@ input('Pressione enter para sair') #O input serve para pedir da tela
     
     
 import random
+# serve para importar numeros aleatorios
+
 # esse sistema serve para o cliente fazer o pedido, ver o cardapio, se deseja fazer delivey ou não, e para os interessados as vagas
 # inserir seus dados (idade e experiencia) para verificar se seus dados são compativeis com o que a vaga pede
-
 clientes = {}
 # area dos clientes
 
@@ -101,7 +102,7 @@ sucos = {
     '3': 'Maracuja',
     '4': 'Abacaxi'
 }
-# variavel que funciona pelo codigo inteiro e mostr os sabores dos sucos quando colocado
+# variavel que funciona pelo codigo inteiro e mostra os sabores dos sucos quando colocado
 
 refrigerantes = {
     '1': 'Coca Cola',
@@ -329,7 +330,7 @@ def escolher_pagamento():
 
         if escolha == '1':
             return 'Dinheiro'
-        # se o sistema receber 1 (dinheiro) o cliente ira pagar em dinheiro
+        # se o sistema receber 1 (dinheiro) permite o cliente a pagar em dinheiro
 
         elif escolha == '2':
             # se o sistema receber 2 (cartão) da a opção de pagar no credito ou debito
@@ -351,25 +352,33 @@ def escolher_pagamento():
 
                 else:
                     print('Opção Inexistente, Tente Novamente.')
+                    # caso o cliente escolha alguma opção fora do permitido, esse codigo sinaliza que a opção esta incorreta 
+                    # e o direciona para inserir novamente uma opção correta
 
         elif escolha == '3':
             return 'Pix'
-
+            # se o sistema receber 3 (Pix) permite o cliente a pagar no pix
         else:
             print('Opção Inexistente, Tente Novamente.')
+            # caso o cliente escolha alguma opção fora do permitido, esse codigo sinaliza que a opção esta incorreta 
+            # e o direciona para inserir novamente uma opção correta
 
 
 def fazer_pedido(delivery=False):
+     # função que funciona apenas no local dentro desse (def)
 
     endereco = ''
 
     if delivery:
+        
 
         print('\nDELIVERY')
 
         tipo = input('Casa ou Apartamento: ').lower()
+        # da a opção do cliente escolher casa ou apartamento 
 
         if tipo == 'casa':
+            # se o cliente inserir casa ou C
             rua = input('Endereco: ')
             numero = input('Numero: ')
             endereco = rua + ', ' + numero
