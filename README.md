@@ -20,6 +20,10 @@ Viniciu Souza
 
 
 
+Beatriz Esther
+
+
+
 ---
 
 # 🍔 Sistema de Gerenciamento - Hamburgueria
